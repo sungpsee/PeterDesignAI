@@ -23,13 +23,25 @@ FONT_PATH = BASE_DIR / "fonts" / "AppleSDGothicNeo.ttc"
 def get_font(size):
     return ImageFont.truetype(str(FONT_PATH), size)
 
-def draw_bold_text(draw, xy, text, font, fill, stroke=2):
+def draw_bold_text(draw, xy, text, font, fill, stroke=4):
     x, y = xy
+
     for dx in range(-stroke, stroke + 1):
         for dy in range(-stroke, stroke + 1):
             if dx != 0 or dy != 0:
-                draw.text((x + dx, y + dy), text, font=font, fill=fill)
-    draw.text((x, y), text, font=font, fill=fill)
+                draw.text(
+                    (x + dx, y + dy),
+                    text,
+                    font=font,
+                    fill=fill
+                )
+
+    draw.text(
+        (x, y),
+        text,
+        font=font,
+        fill=fill
+    )
 
 def center_text(draw, text, y, font, fill, width, gap, bold=False):
     lines = text.split("\n")
