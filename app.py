@@ -15,10 +15,13 @@ place = st.text_input("장소", "신관 지하2층 세미나실")
 target = st.text_input("대상", "신경과, 신경외과 의료진\n신경과 간호사, 뇌파기사")
 notice = st.text_input("하단 안내문구", "대상자는 필수 참석이며, 관심있는 의료진 분들의 참석을 바랍니다.")
 
-FONT_PATH = "/System/Library/Fonts/AppleSDGothicNeo.ttc"
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+FONT_PATH = BASE_DIR / "fonts" / "AppleSDGothicNeo.ttc"
 
 def get_font(size):
-    return ImageFont.truetype(FONT_PATH, size)
+    return ImageFont.truetype(str(FONT_PATH), size)
 
 def draw_bold_text(draw, xy, text, font, fill, stroke=2):
     x, y = xy
