@@ -18,7 +18,7 @@ notice = st.text_input("하단 안내문구", "대상자는 필수 참석이며,
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
-FONT_PATH = BASE_DIR / "fonts" / "AppleSDGothicNeo.ttc"
+FONT_PATH = BASE_DIR / "fonts" / "Pretendard-Regular.otf"
 
 def get_font(size):
     return ImageFont.truetype(str(FONT_PATH), size)
