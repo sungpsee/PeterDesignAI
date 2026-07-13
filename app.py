@@ -126,7 +126,7 @@ def draw_info(draw, y, label, value, width, font_size, bold=False):
 
 def make_poster():
     # 여기서 2배 고해상도로 생성
-    scale = 2
+    scale = 1
 
     bg = Image.open("poster_bg.jpg").convert("RGB")
     w, h = bg.size
@@ -210,7 +210,7 @@ if st.button("포스터 생성하기"):
     st.success("포스터가 생성되었습니다!")
 
     preview = poster.copy()
-    preview.thumbnail((900, 1300))
+    preview.thumbnail((700, 1000))
     st.image(preview, caption="생성된 포스터 미리보기", use_container_width=True)
 
     buffer = BytesIO()
