@@ -18,10 +18,20 @@ notice = st.text_input("하단 안내문구", "대상자는 필수 참석이며,
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
-FONT_PATH = BASE_DIR / "fonts" / "Pretendard-Regular.otf"
 
-def get_font(size):
-    return ImageFont.truetype(str(FONT_PATH), size)
+FONT_REGULAR = BASE_DIR / "fonts" / "Pretendard-Regular.otf"
+FONT_BOLD = BASE_DIR / "fonts" / "Pretendard-Bold.otf"
+FONT_BLACK = BASE_DIR / "fonts" / "Pretendard-Black.otf"
+
+def get_font(size, weight="regular"):
+    font_paths = {
+        "regular": FONT_REGULAR,
+        "bold": FONT_BOLD,
+        "black": FONT_BLACK,
+    }
+
+    font_path = font_paths.get(weight, FONT_REGULAR)
+    return ImageFont.truetype(str(font_path), size)
 
 def draw_bold_text(draw, xy, text, font, fill, stroke=4):
     x, y = xy
@@ -88,7 +98,10 @@ def draw_info(draw, y, label, value, width, font_size, bold=False):
 
     draw_label(draw, label_x, y, label, font_size)
 
-    font = get_font(int(font_size * 1.18))
+   font = get_font(
+    int(font_size * 1.18),
+    "bold" if bold else "regular"
+)
     lines = value.split("\n")
     line_gap = int(font_size * 1.65)
 
@@ -135,9 +148,9 @@ def make_poster():
     content_h = content_bottom - content_top
 
     # 글씨 크기
-    title_font = get_font(int(width * 0.078))
-    info_font_size = int(width * 0.030)
-    notice_font = get_font(int(width * 0.026))
+    title_font = get_font(int(width * 0.078), "black")
+info_font_size = int(width * 0.030)
+notice_font = get_font(int(width * 0.026), "regular")
 
     # 위치
     title_y = content_top + int(content_h * 0.08)
