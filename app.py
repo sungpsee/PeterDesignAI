@@ -98,10 +98,11 @@ def draw_info(draw, y, label, value, width, font_size, bold=False):
 
     draw_label(draw, label_x, y, label, font_size)
 
-   font = get_font(
-    int(font_size * 1.18),
-    "bold" if bold else "regular"
-)
+    font = get_font(
+        int(font_size * 1.18),
+        "bold" if bold else "regular"
+    )
+
     lines = value.split("\n")
     line_gap = int(font_size * 1.65)
 
