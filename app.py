@@ -78,7 +78,7 @@ def draw_label(draw, x, y, label, font_size):
         fill=navy
     )
 
-    font = get_font(font_size)
+    font = get_font(font_size, "bold")
     bbox = draw.textbbox((0, 0), label, font=font)
     tw = bbox[2] - bbox[0]
     th = bbox[3] - bbox[1]
@@ -110,7 +110,7 @@ def draw_info(draw, y, label, value, width, font_size, bold=False):
         if bold:
             draw_bold_text(
                 draw,
-                (text_x, y + int(font_size * 0.18) + i * line_gap),
+                (text_x, y + int(font_size * 0.10) + i * line_gap),
                 line,
                 font,
                 (20, 20, 20),
@@ -118,7 +118,7 @@ def draw_info(draw, y, label, value, width, font_size, bold=False):
             )
         else:
             draw.text(
-                (text_x, y + int(font_size * 0.18) + i * line_gap),
+                (text_x, y + int(font_size * 0.10) + i * line_gap),
                 line,
                 font=font,
                 fill=(20, 20, 20)
@@ -150,8 +150,8 @@ def make_poster():
 
     # 글씨 크기
     title_font = get_font(int(width * 0.078), "black")
-info_font_size = int(width * 0.030)
-notice_font = get_font(int(width * 0.026), "regular")
+    info_font_size = int(width * 0.030)
+    notice_font = get_font(int(width * 0.026), "regular")
 
     # 위치
     title_y = content_top + int(content_h * 0.08)
@@ -196,7 +196,7 @@ notice_font = get_font(int(width * 0.026), "regular")
     th = bbox[3] - bbox[1]
 
     draw.text(
-        ((width - tw) / 2, notice_y + (box_h - th) / 2 - 4),
+        ((width - tw) / 2, notice_y + (box_h - th) / 2 - 8),
         notice,
         font=notice_font,
         fill=black
